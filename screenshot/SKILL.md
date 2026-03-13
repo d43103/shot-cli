@@ -15,7 +15,7 @@ The `shot-cli` binary must be available in PATH. Before any capture, verify inst
 which shot-cli
 ```
 
-If not found, install using the `screenshot-install` skill or see the install methods below:
+If not found, install via one of the methods below:
 
 **Homebrew (recommended):**
 ```bash
@@ -28,7 +28,7 @@ git clone https://github.com/d43103/shot-cli.git /tmp/shot-cli
 cd /tmp/shot-cli
 swift build -c release 2>&1 | tail -5
 mkdir -p ~/.local/bin
-cp .build/release/shot-cli shot-cli
+cp .build/release/shot-cli ~/.local/bin/shot-cli
 rm -rf /tmp/shot-cli
 ```
 
