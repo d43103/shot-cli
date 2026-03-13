@@ -84,6 +84,10 @@ Base64 is always printed to stdout. Additional output flags are additive:
 | 3 | Capture failed |
 | 130 | User cancelled |
 
+## AI Skill Install
+
+To set up `shot-cli` as a Claude Code skill, pass [`skill-install.md`](skill-install.md) to your AI agent. It will automatically install the binary and register the screenshot skill.
+
 ## Requirements
 
 - macOS 13+
