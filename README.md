@@ -6,8 +6,19 @@ A thin wrapper around `screencapture` with base64 output, app-targeted capture, 
 
 ## Install
 
+### Homebrew (recommended)
+
 ```bash
+brew install d43103/tap/shot-cli
+```
+
+### Build from source
+
+```bash
+git clone https://github.com/d43103/shot-cli.git
+cd shot-cli
 swift build -c release
+mkdir -p ~/.local/bin
 cp .build/release/shot-cli ~/.local/bin/shot-cli
 ```
 
