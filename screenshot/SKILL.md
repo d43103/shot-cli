@@ -18,7 +18,7 @@ which shot
 If not found, build and install from source:
 
 ```bash
-cd ~/Workspace/toy/shot-cli
+cd <shot-cli-project-dir>
 swift build -c release 2>&1 | tail -5
 mkdir -p ~/.local/bin
 cp .build/release/shot ~/.local/bin/shot
