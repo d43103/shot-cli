@@ -28,7 +28,7 @@ git clone https://github.com/d43103/shot-cli.git /tmp/shot-cli
 cd /tmp/shot-cli
 swift build -c release 2>&1 | tail -5
 mkdir -p ~/.local/bin
-cp .build/release/shot-cli ~/.local/bin/shot-cli
+cp .build/release/shot-cli shot-cli
 rm -rf /tmp/shot-cli
 ```
 
@@ -46,19 +46,19 @@ Ask the user what to capture, or determine from context. Choose the appropriate 
 
 | Scenario | Command |
 |----------|---------|
-| User specifies an app | `~/.local/bin/shot-cli --app <AppName>` |
-| Need to find windows first | `~/.local/bin/shot-cli --list` → analyze → `--app` or `--rect` |
-| User wants to select area | `~/.local/bin/shot-cli` (interactive region selection) |
-| User wants specific window click | `~/.local/bin/shot-cli --window` |
-| Full screen needed | `~/.local/bin/shot-cli --full` |
-| Exact coordinates known | `~/.local/bin/shot-cli --rect x,y,w,h` |
+| User specifies an app | `shot-cli --app <AppName>` |
+| Need to find windows first | `shot-cli --list` → analyze → `--app` or `--rect` |
+| User wants to select area | `shot-cli` (interactive region selection) |
+| User wants specific window click | `shot-cli --window` |
+| Full screen needed | `shot-cli --full` |
+| Exact coordinates known | `shot-cli --rect x,y,w,h` |
 
 ### 2. Capture and read
 
 To capture and have Claude view the result, save to a file and read it:
 
 ```bash
-~/.local/bin/shot-cli --app Safari -o /path/to/screenshot.png
+shot-cli --app Safari -o /path/to/screenshot.png
 ```
 
 Then use the Read tool on the saved PNG file to view the screenshot.
@@ -69,15 +69,15 @@ For autonomous debugging workflows where the agent decides what to capture:
 
 ```bash
 # Step 1: Discover available windows
-~/.local/bin/shot-cli --list
+shot-cli --list
 
 # Step 2: Parse the JSON output to find target window
 # Output: [{"app":"Safari","title":"GitHub","id":1234,"x":0,"y":25,"w":1440,"h":875}, ...]
 
 # Step 3: Capture the specific app or region
-~/.local/bin/shot-cli --app Safari -o screenshot.png
+shot-cli --app Safari -o screenshot.png
 # or for a precise region:
-~/.local/bin/shot-cli --rect 0,25,1440,875 -o screenshot.png
+shot-cli --rect 0,25,1440,875 -o screenshot.png
 ```
 
 ### 4. Multiple app capture
@@ -85,7 +85,7 @@ For autonomous debugging workflows where the agent decides what to capture:
 To capture multiple apps at once:
 
 ```bash
-~/.local/bin/shot-cli --app Safari --app Terminal --json
+shot-cli --app Safari --app Terminal --json
 ```
 
 JSON output schema:
