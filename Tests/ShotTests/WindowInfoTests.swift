@@ -1,5 +1,5 @@
 import XCTest
-@testable import shot
+@testable import shot_cli
 
 final class WindowInfoTests: XCTestCase {
     func testJsonEncoding() throws {

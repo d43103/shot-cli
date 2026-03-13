@@ -1,5 +1,5 @@
 import XCTest
-@testable import shot
+@testable import shot_cli
 
 final class OutputHandlerTests: XCTestCase {
     let testData = "hello screenshot".data(using: .utf8)!

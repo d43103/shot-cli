@@ -16,7 +16,7 @@ enum OutputHandler {
             formatter.dateFormat = "yyyy-MM-dd-HHmmss"
             let timestamp = formatter.string(from: Date())
             let desktop = (NSHomeDirectory() as NSString).appendingPathComponent("Desktop")
-            targetPath = (desktop as NSString).appendingPathComponent("shot-\(timestamp).png")
+            targetPath = (desktop as NSString).appendingPathComponent("shot-cli-\(timestamp).png")
         }
 
         try data.write(to: URL(fileURLWithPath: targetPath))

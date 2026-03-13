@@ -3,3 +3,5 @@
 *.xcodeproj
 *.xcworkspace
 DerivedData/
+.claude/tmp/
+screenshot.zip

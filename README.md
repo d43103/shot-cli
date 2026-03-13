@@ -1,4 +1,4 @@
-# shot
+# shot-cli
 
 macOS screenshot CLI for AI debugging workflows.
 
@@ -8,32 +8,32 @@ A thin wrapper around `screencapture` with base64 output, app-targeted capture, 
 
 ```bash
 swift build -c release
-cp .build/release/shot ~/.local/bin/shot
+cp .build/release/shot-cli ~/.local/bin/shot-cli
 ```
 
 ## Usage
 
 ```bash
 # Interactive region selection (Cmd+Shift+4 equivalent)
-shot
+shot-cli
 
 # Click to select a window
-shot --window
+shot-cli --window
 
 # Full screen capture
-shot --full
+shot-cli --full
 
 # Capture by app name
-shot --app Safari
+shot-cli --app Safari
 
 # Capture multiple apps (requires --json)
-shot --app Safari --app Terminal --json
+shot-cli --app Safari --app Terminal --json
 
 # Capture specific region
-shot --rect 0,25,1440,875
+shot-cli --rect 0,25,1440,875
 
 # List all windows as JSON
-shot --list
+shot-cli --list
 ```
 
 ## AI Workflow
@@ -42,14 +42,14 @@ Programmatic capture workflow for AI agents:
 
 ```bash
 # 1. Discover windows
-shot --list
+shot-cli --list
 # [{"app":"Safari","title":"GitHub","id":1234,"x":0,"y":25,"w":1440,"h":875}, ...]
 
 # 2. Capture target app
-shot --app Safari -o screenshot.png
+shot-cli --app Safari -o screenshot.png
 
 # 3. Or capture exact region
-shot --rect 0,25,1440,875 -o screenshot.png
+shot-cli --rect 0,25,1440,875 -o screenshot.png
 ```
 
 ## Output
@@ -59,7 +59,7 @@ Base64 is always printed to stdout. Additional output flags are additive:
 | Flag | Effect |
 |------|--------|
 | `-o path` | Save to file |
-| `--file` | Save to `~/Desktop/shot-{timestamp}.png` |
+| `--file` | Save to `~/Desktop/shot-cli-{timestamp}.png` |
 | `--clipboard` | Copy to clipboard |
 | `--json` | Output as JSON array |
 
