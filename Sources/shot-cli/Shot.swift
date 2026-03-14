@@ -24,6 +24,13 @@ struct Shot: ParsableCommand {
     @Option(name: .long, help: "Capture rectangle region (x,y,w,h)")
     var rect: String?
 
+    // Image processing
+    @Flag(name: .long, help: "Keep original Retina resolution (skip 1x downscale)")
+    var retina = false
+
+    @Option(name: .long, help: "Max pixel size for longest edge (default: 1568, 0 = no limit)")
+    var maxSize: Int = 1568
+
     // Output options
     @Flag(name: .long, help: "Save to file")
     var file = false
@@ -67,6 +74,8 @@ struct Shot: ParsableCommand {
                 full: full,
                 apps: app,
                 rect: rect,
+                retina: retina,
+                maxSize: maxSize,
                 file: file,
                 output: output,
                 clipboard: clipboard,

@@ -13,6 +13,8 @@ enum CaptureCommand {
         full: Bool,
         apps: [String],
         rect: String?,
+        retina: Bool = false,
+        maxSize: Int = 1568,
         file: Bool,
         output: String?,
         clipboard: Bool,
@@ -50,7 +52,13 @@ enum CaptureCommand {
             results.append(CaptureResult(data: data, app: nil, title: nil))
         }
 
-        try handleOutput(results: results, file: file, output: output, clipboard: clipboard, json: json)
+        // Apply image resizing: 1x downscale (default) + max-size constraint
+        let processedResults = results.map { r in
+            let resized = ImageResizer.resize(r.data, downscaleToLogical: !retina, maxSize: maxSize)
+            return CaptureResult(data: resized, app: r.app, title: r.title)
+        }
+
+        try handleOutput(results: processedResults, file: file, output: output, clipboard: clipboard, json: json)
     }
 
     private static func parseRect(_ str: String) throws -> CaptureMode {

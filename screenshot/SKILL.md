@@ -5,7 +5,7 @@ description: This skill should be used when the user asks to take a screenshot, 
 
 # Screenshot
 
-Capture macOS screenshots using the `shot-cli` CLI tool. Supports interactive selection, app-targeted capture, and coordinate-based capture. Output is saved as PNG files that Claude can read directly via the Read tool.
+Capture macOS screenshots using the `shot-cli` CLI tool. Supports interactive selection, app-targeted capture, and coordinate-based capture. Screenshots are automatically optimized for AI vision models (1x downscale + max 1568px). Output is saved as PNG files that Claude can read directly via the Read tool.
 
 ## Prerequisites
 
@@ -95,6 +95,20 @@ JSON output schema:
   {"index": 1, "app": "Terminal", "title": "zsh", "base64": "iVBORw..."}
 ]
 ```
+
+## Image processing
+
+Screenshots are automatically optimized for AI readability:
+
+- **1x downscale** (default): Retina 2x → 1x for cleaner text at AI model resolution
+- **Max 1568px** (default): Longest edge capped at Claude's optimal input size
+
+| Flag | Default | Effect |
+|------|---------|--------|
+| `--retina` | off | Keep original Retina (2x) resolution |
+| `--max-size N` | 1568 | Max pixels on longest edge (0 = no limit) |
+
+For high-detail captures where text is too small, use `--retina` to preserve full resolution. For most AI workflows, the defaults produce optimal results.
 
 ## Output options
 

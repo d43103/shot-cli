@@ -63,6 +63,32 @@ shot-cli --app Safari -o screenshot.png
 shot-cli --rect 0,25,1440,875 -o screenshot.png
 ```
 
+## Image Processing
+
+By default, screenshots are downscaled from Retina (2x) to 1x resolution and capped at 1568px on the longest edge — optimized for AI vision models like Claude.
+
+```bash
+# Default: 1x downscale + max 1568px (AI-optimized)
+shot-cli --app Safari -o screenshot.png
+
+# Keep Retina resolution but cap at 1568px
+shot-cli --app Safari --retina -o screenshot.png
+
+# Custom max size
+shot-cli --app Safari --max-size 2048 -o screenshot.png
+
+# No size limit (1x downscale only)
+shot-cli --app Safari --max-size 0 -o screenshot.png
+
+# Original Retina, no processing
+shot-cli --app Safari --retina --max-size 0 -o screenshot.png
+```
+
+| Flag | Default | Effect |
+|------|---------|--------|
+| `--retina` | off | Keep original Retina (2x) resolution |
+| `--max-size N` | 1568 | Max pixels on longest edge (0 = no limit) |
+
 ## Output
 
 Base64 is always printed to stdout. Additional output flags are additive:
