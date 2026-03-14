@@ -5,7 +5,7 @@ import Foundation
 struct Shot: ParsableCommand {
     static let configuration = CommandConfiguration(
         abstract: "macOS screenshot CLI for AI debugging workflows",
-        version: "0.1.0"
+        version: "0.1.1"
     )
 
     // Capture mode (mutually exclusive)
